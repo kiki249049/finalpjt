@@ -1,0 +1,76 @@
+*{
+  color: white;
+}
+
+body{
+  margin: 0;
+}
+
+section{
+  height: 60vh;
+  background: url(https://infatuation.imgix.net/media/images/reviews/kaia-wine-bar/banners/1518216958.28.jpg);
+}
+
+section:before{
+  content:'';
+  background: linear-gradient(to top,black,transparent);
+  position: absolute;
+  left: 0;
+  height: 70%;
+  width: 100%;
+}
+
+h1{
+  font-size: 4em;
+  position: absolute;
+  top: 250px;
+  left: 250px;
+  font-family: sans-serif;
+  
+}
+
+h3{
+  position: absolute;
+  top: 350px;
+  left: 250px;
+  font-family: sans-serif;
+  animation: slide 2s ease-out;
+}
+
+ul.mylist li{
+  list-style: none;
+  padding: 20px 50px 20px 50px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+ 
+  border-bottom: 1px solid gray;
+  
+  
+  background-color: linen;
+  color: black;
+  font-size: 20px;
+}
+
+.listcard{
+  border-style:solid;
+  border-radius: 30px;
+  border-color: gray;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  width: 30%;
+  background-color: lightgray;
+  box-shadow: 3px 2px 2px gray;
+}
+
+@keyframes slide {
+  from{
+    left: -100px;
+    opacity: 0;
+  }
+  to{
+    left: 250px;
+    opacity: 1;
+  }
+}
