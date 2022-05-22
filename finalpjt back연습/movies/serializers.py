@@ -6,14 +6,16 @@ class GenreSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Genre
-        fields = ('id', 'name',)
+        fields = ('id','name',)
 
 class MovieSerializer(serializers.ModelSerializer):
 
+    genre_ids = GenreSerializer(many=True, read_only=True)
+    # genre_ids = genre_ids[:3]
     class Meta:
         model = Movie
-        exclude = ('id', 'like_users')
-        read_only_fields = ('genres',)
+        fields = ('__all__')
+        # read_only_fields = ('genres',)
 
 class MovieRandomSerializer(serializers.ModelSerializer):
 

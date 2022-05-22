@@ -41,5 +41,5 @@ def emotion_movie(request) :
 def genre_movie(request, genre_pk) :
     if request.method == 'GET' :
         movies = Movie.objects.filter(genre_ids=genre_pk)[:10]
-        serializer = MovieSerializer(movies)
+        serializer = MovieSerializer(movies, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)

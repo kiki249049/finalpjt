@@ -39,6 +39,25 @@ export default ({
           }
         })
     },
+    fetchGenreMovies({commit, getters},genrePk ){
+      // 영화 목록 받아오기
+      // 성공하면 state.movies에 저장
+      axios({
+        url : drf.movies.genreMovies(genrePk),
+        mehtod : 'get',
+        headers : getters.authHeader
+      })
+        .then(res => {
+          commit('SET_MOVIES', res.data),
+          console.log(res)
+        })
+        .catch(err => {
+          console.error(err.response)
+          if (err.response.status === 404) {
+            router.push({ name: 'NotFound404' })
+          }
+        })
+    },
 
     fetchPopularMovies({commit, getters}){
       axios({
@@ -58,21 +77,6 @@ export default ({
     fetchEmotionMovies({commit, getters}){
       axios({
         url : drf.movies.emotionMovies(),
-        method : 'get',
-        headers : getters.authHeader
-      })
-        .then(res => commit('SET_MOVIES', res.data))
-        .catch(err => {
-          console.error(err.response)
-          if (err.response.status === 404) {
-            router.push({ name: 'NotFound404' })
-          }
-        })
-    },
-
-    fetchGenreMovies({commit, getters}){
-      axios({
-        url : drf.movies.genreMovies(),
         method : 'get',
         headers : getters.authHeader
       })

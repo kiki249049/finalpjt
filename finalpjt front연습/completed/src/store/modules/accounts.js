@@ -67,7 +67,7 @@ export default {
           const token = res.data.key
           dispatch('saveToken', token)
           dispatch('fetchCurrentUser')
-          router.push({ name: 'reviews' })
+          router.push({ name: 'movies' })
         })
         .catch(err => {
           console.error(err.response.data)
@@ -94,7 +94,7 @@ export default {
           const token = res.data.key
           dispatch('saveToken', token)
           dispatch('fetchCurrentUser')
-          router.push({ name: 'reviews' })
+          router.push({ name: 'movies' })
         })
         .catch(err => {
           console.error(err.response.data)
@@ -120,7 +120,6 @@ export default {
       })
         .then(() => {
           dispatch('removeToken')
-          alert('성공적으로 logout!')
           router.push({ name: 'login' })
         })
         .catch(err => {
