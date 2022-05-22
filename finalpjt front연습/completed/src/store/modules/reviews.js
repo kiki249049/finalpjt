@@ -70,7 +70,7 @@ export default {
         })
     },
 
-    createReview({ commit, getters }, review) {
+    createReview({ commit, getters }, {moviePk, review}) {
       /* 게시글 생성
       POST: articles URL (게시글 입력정보, token)
         성공하면
@@ -81,7 +81,7 @@ export default {
       */
       
       axios({
-        url: drf.reviews.reviews(),
+        url: drf.reviews.createreview(moviePk),
         method: 'post',
         data: review,
         headers: getters.authHeader,
@@ -89,8 +89,7 @@ export default {
         .then(res => {
           commit('SET_REVIEW', res.data)
           router.push({
-            name: 'review',
-            params: { reviewPk: getters.review.pk }
+            name: 'reviews'
           })
         })
     },
@@ -172,7 +171,7 @@ export default {
       const comment = { content }
 
       axios({
-        url: drf.articles.comments(reviewPk),
+        url: drf.reviews.comments(reviewPk),
         method: 'post',
         data: comment,
         headers: getters.authHeader,

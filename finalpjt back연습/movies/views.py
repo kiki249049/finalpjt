@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from .models import Movie, Genre
-from .serializers import MovieSerializer, MovieRandomSerializer, GenreSerializer
+from .serializers import MovieListSerializer, MovieSerializer, GenreSerializer
 
 # user 모델 가져오기
 from django.contrib.auth import get_user_model
@@ -16,15 +16,22 @@ from django.contrib.auth import get_user_model
 def movie_list(request) :
     if request.method == 'GET' :
         movies = Movie.objects.order_by('-popularity')[:10]
-        serialzer = MovieSerializer(movies, many=True)
+        serialzer = MovieListSerializer(movies, many=True)
         return Response(serialzer.data, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def get_movie(request, movie_pk) :
+    if request.method == 'GET' :
+        movie = get_object_or_404(Movie, pk=movie_pk)
+        serializer = MovieSerializer(movie)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
 def popular_movie(request) :
     if request.method == 'GET' :
         movies = Movie.objects.order_by('-popularity')
-        serializer = MovieSerializer(movies)
+        serializer = MovieListSerializer(movies)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 ### papago API + emtion API 합쳐서 그에 해당하는 장르가져오는 함수 만들기
@@ -41,5 +48,5 @@ def emotion_movie(request) :
 def genre_movie(request, genre_pk) :
     if request.method == 'GET' :
         movies = Movie.objects.filter(genre_ids=genre_pk)[:10]
-        serializer = MovieSerializer(movies, many=True)
+        serializer = MovieListSerializer(movies, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)

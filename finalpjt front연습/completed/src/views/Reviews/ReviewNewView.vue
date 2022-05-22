@@ -8,6 +8,7 @@
 
 <script>
   import ReviewForm from '@/components/ReviewForm.vue'
+  import {mapActions } from 'vuex'
   export default {
     name: 'ReviewNewView',
     components: { ReviewForm },
@@ -17,11 +18,16 @@
           pk: null,
           title: '',
           content: '',
-          movie_title:'',
           rank : 0,
         }
       }
     },
+    methods : {
+      ...mapActions(['fetchMovie'])
+    },
+    created(){
+      this.fetchMovie(this.$route.params.moviePk)
+    }
   }
 </script>
 

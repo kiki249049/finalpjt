@@ -174,7 +174,7 @@
       </netflixintro>
     <div class="login-box bg-transparent border-danger">
 
-      <h2 class="fw-bold">MODIE X</h2>
+      <h2 class="fw-bold">MOODIE X</h2>
 
       <account-error-list v-if="authError"></account-error-list>
 
@@ -190,7 +190,7 @@
           <input type="password" v-model="credentials.password" required/>
           <label>Password</label>
         </div>
-        <p style="color: #fff">아직 MODIE X의 회원이 아니시면 <router-link :to="{name : 'signup'}">회원가입</router-link>을 해주세요.</p>
+        <p style="color: #fff">아직 MOODIE X의 회원이 아니시면 <router-link :to="{name : 'signup'}">회원가입</router-link>을 해주세요.</p>
         <button href="#">
           <span></span>
           <span></span>

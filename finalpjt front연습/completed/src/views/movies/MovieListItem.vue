@@ -23,6 +23,7 @@
         <div class="content">
           <p>영화 개봉일 : {{ movie.release_date }}<br>{{ movie.overview }}<br><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>{{ likeUsers }} </p>
           <button class="fw-bold">Read more</button>
+          <router-link :to="{ name : 'reviewNew' , params : { moviePk : movie.id } }">리뷰쓰기</router-link>
         </div>
       </div>
     </div>

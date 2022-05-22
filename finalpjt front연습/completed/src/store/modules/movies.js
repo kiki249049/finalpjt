@@ -39,6 +39,24 @@ export default ({
           }
         })
     },
+
+    fetchMovie({commit, getters}, moviePk){
+      axios({
+        url : drf.movies.movie(moviePk),
+        method : 'get',
+        headers : getters.authHeader,
+      })
+        .then(res => {
+          commit('SET_MOVIE', res.data)
+          console.log(res.data)
+        })
+        .catch(err => {
+          console.error(err.response)
+          if(err.response.status == 404){
+            router.push({ name : 'NotFound404' })
+          }
+        })
+    },
     fetchGenreMovies({commit, getters},genrePk ){
       // 영화 목록 받아오기
       // 성공하면 state.movies에 저장

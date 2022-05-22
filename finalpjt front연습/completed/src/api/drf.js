@@ -18,6 +18,7 @@ export default {
   reviews: {
     // /articles/
     reviews: () => HOST + REVIEWS,
+    createreview: (moviePk) => HOST + REVIEWS + `${moviePk}/` + 'reviews/',
     // /articles/1/
     review: reviewPk => HOST + REVIEWS + `${reviewPk}/`,
     likeReview: reviewPk => HOST + REVIEWS + `${reviewPk}/` + 'like/',
@@ -28,6 +29,8 @@ export default {
   movies : {
     // movies
     movies : () => HOST + MOVIES,
+    // movie
+    movie : moviePk => HOST + MOVIES + `${moviePk}/`,
     // popular_movies
     popularMovies : () => HOST + MOVIES + 'popular/',
     // recommend by emotion

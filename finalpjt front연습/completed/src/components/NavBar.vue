@@ -31,7 +31,7 @@
   <div class="nav-container"> -->
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
       <div class="container-fluid">
-        <a href="#" class="fw-bold navbar-brand" @click="fetchMovies()"><router-link class="text-white text-decoration-none" :to="{ name : 'movies' }" >MODIE X</router-link></a>
+        <a href="#" class="fw-bold navbar-brand" @click="fetchMovies()"><router-link class="text-white text-decoration-none" :to="{ name : 'movies' }" >MOODIE X</router-link></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>

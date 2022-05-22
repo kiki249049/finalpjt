@@ -20,7 +20,7 @@ class ReviewSerializer(serializers.ModelSerializer) :
 
     class Meta : 
         model = Review
-        fields = ('pk','title','movie_title','rank','created_at','updated_at','content','comments','user','like_users',)
+        fields = ('pk','title','rank','created_at','updated_at','content','comments','user','like_users',)
 
 
 class ReviewListSerializer(serializers.ModelSerializer) :
@@ -36,4 +36,4 @@ class ReviewListSerializer(serializers.ModelSerializer) :
 
     class Meta :
         model = Review
-        fields = ('pk','title','movie_title','rank','created_at','updated_at','user','like_count','comment_count')
+        fields = ('pk','title','rank','created_at','updated_at','user','like_count','comment_count')

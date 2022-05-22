@@ -52,7 +52,7 @@
     </label>
     <button type="submit">이제 영화보러 갈까요?</button>
     <p class="tip">Press Tab</p>
-    <div class="signup-button">MODIE X와 함께 하시겠어요?</div>
+    <div class="signup-button">MOODIE X와 함께 하시겠어요?</div>
   </form>
     
   </div>

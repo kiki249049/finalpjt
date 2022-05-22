@@ -11,7 +11,6 @@ class Review(models.Model):
     movie = models.ForeignKey('movies.Movie', on_delete=models.CASCADE, related_name='reviews')
 
     title = models.CharField(max_length=100)
-    movie_title = models.CharField(max_length=30)
     rank = models.FloatField()
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
