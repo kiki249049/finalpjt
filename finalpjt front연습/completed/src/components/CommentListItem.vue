@@ -4,7 +4,9 @@
       {{ comment.user.username }}
     </router-link>: 
     
-    <span v-if="!isEditing">{{ payload.content }}</span>
+    <span v-if="!isEditing">{{ payload.content }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span>생성시각 : {{ comment.created_at | moment('YYYY-MM-DD HH:mm:ss') }}</span> |
+    <span>수정시각 : {{ comment.updated_at | moment('YYYY-MM-DD HH:mm:ss')}}</span>
 
     <span v-if="isEditing">
       <input type="text" v-model="payload.content">
@@ -21,6 +23,9 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import Vue from 'vue'
+import vueMoment from 'vue-moment'
+Vue.use(vueMoment)
 
 export default {
   name: 'CommentListItem',
@@ -29,7 +34,7 @@ export default {
     return {
       isEditing: false,
       payload: {
-        articlePk: this.comment.article,
+        reviewPk: this.comment.review,
         commentPk: this.comment.pk,
         content: this.comment.content
       },

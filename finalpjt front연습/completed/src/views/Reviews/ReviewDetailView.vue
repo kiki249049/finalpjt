@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h1>{{ review.title }}</h1>
+    <h1>영화 제목 : {{ review.movie.title }}</h1>
+    <h1>제목 : {{ review.title }}</h1>
+    <p>생성시각 : {{ review.created_at | moment('YYYY-MM-DD HH:mm:ss') }}</p>
+    <p>수정시각 : {{ review.updated_at | moment('YYYY-MM-DD HH:mm:ss')}}</p>
 
     <p>
       {{ review.content }}
@@ -32,7 +35,9 @@
 <script>
   import { mapGetters, mapActions } from 'vuex'
   import CommentList from '@/components/CommentList.vue'
-
+  import Vue from 'vue'
+  import vueMoment from 'vue-moment'
+  Vue.use(vueMoment)
 
 
   export default {
