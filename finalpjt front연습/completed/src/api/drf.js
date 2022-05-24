@@ -34,9 +34,10 @@ export default {
     // popular_movies
     popularMovies : () => HOST + MOVIES + 'popular/',
     // recommend by emotion
-    emotionMovies : () => HOST + MOVIES + 'recommend/',
+    emotionMovies : (content) => HOST + MOVIES + 'moodie/' + `${content}/`,
     // Genre Movies
-    genreMovies : (genrePk) => HOST + MOVIES + `${genrePk}/`
-
+    genreMovies : (genrePk) => HOST + MOVIES + `genre/` + `${genrePk}/`,
+    // like Movie
+    likeMovie : (moviePk) => HOST + MOVIES + `${moviePk}/` + 'like/' 
   }
 }

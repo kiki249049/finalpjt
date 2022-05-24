@@ -18,12 +18,15 @@
     <div @click="Cardopen" class="card" :id="cardId" :style="{ backgroundImage : 'url('+imgURL+')'}">
       <button @click="CardClose" class="closed" :id="closedId" style="width:50px; right : 0"><i class="fa fa-times" aria-hidden="true"></i></button>
       <div class="box">
-        <h3 class="title">{{ movie.title }}<br><i class="fa fa-star" aria-hidden="true" style="color:orange;"></i>{{ movie.vote_average }}</h3>
+        <h3 class="title">{{ movie.title }}<br><i class="fa fa-star my-1" aria-hidden="true" style="color:orange;"></i>{{ movie.vote_average }}</h3>
         <div class="release_date"></div>
         <div class="content">
-          <p>영화 개봉일 : {{ movie.release_date }}<br>{{ movie.overview }}<br><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>{{ likeUsers }} </p>
-          <button class="fw-bold">Read more</button>
-          <router-link :to="{ name : 'reviewNew' , params : { moviePk : movie.id } }">리뷰쓰기</router-link>
+          <p>영화 개봉일 : {{ movie.release_date }}<br>{{ movie.overview }}<br>
+          <i v-if="movie.like_users.includes(currentUser.pk)" @click="likeMovie(movie.id); resetMovies()" class="fa fa-heart" style="color : red; cursor: pointer" aria-hidden="true"></i>
+          <i v-else @click="likeMovie(movie.id); resetMovies()" class="fa fa-heart-o" style="cursor : pointer" aria-hidden="true"></i>
+          {{ likeUsers }} </p>
+          <button class="fw-bold mb-1">Read more</button>
+          <router-link class="text-decoration-none btn btn-dark mx-1 rounded-pill" style="font-family: arial" :to="{ name : 'reviewNew' , params : { moviePk : movie.id } }">리뷰쓰기</router-link>
         </div>
       </div>
     </div>
@@ -31,6 +34,8 @@
 </template>
 
 <script>
+import {mapActions, mapGetters} from 'vuex'
+
 export default {
   name : "MovieListItem",
   props : {
@@ -45,6 +50,7 @@ export default {
     }
   },
   computed : {
+    ...mapGetters(['currentUser','genreId']),
     imgUrl(){
       return `https://image.tmdb.org/t/p/w500${this.movie.poster_path}`
     },
@@ -58,7 +64,7 @@ export default {
       return `closed${this.movie.id}`
     },
     likeUsers(){
-      return this.movie.like_users.length
+      return this.movie.like_users?.length
     }
   },
   filter : {
@@ -70,6 +76,7 @@ export default {
     }
   },
   methods : {
+    ...mapActions(['likeMovie']),
     Cardopen(e){
       e.stopPropagation()
       let card = document.querySelector(`#card${this.movie.id}`);
@@ -83,7 +90,10 @@ export default {
       let closed = document.querySelector(`#closed${this.movie.id}`)
       closed.classList.remove("closeding");
       card.classList.remove("cardTransform");
-      }
+      },
+    resetMovies(){
+      this.$emit('movie-reset',)
+    }
   },
 //   mounted(){
 //     let card = document.querySelector("#card");

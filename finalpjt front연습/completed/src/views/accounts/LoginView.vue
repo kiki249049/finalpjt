@@ -174,7 +174,10 @@
       </netflixintro>
     <div class="login-box bg-transparent border-danger">
 
-      <h2 class="fw-bold">MOODIE X</h2>
+      <!-- <h2 class="fw-bold">MOODIE X</h2> -->
+      <div class="d-flex justify-content-center">
+         <img src="@/assets/logo4.png" style="left:50px; width:220px;" alt="logo4">
+      </div>
 
       <account-error-list v-if="authError"></account-error-list>
 
@@ -182,7 +185,7 @@
       
 
         <form @submit.prevent="login(credentials)">
-        <div class="user-box">
+        <div class="user-box my-2">
           <input type="text" v-model="credentials.username"  required/>
           <label>Username</label>
         </div>

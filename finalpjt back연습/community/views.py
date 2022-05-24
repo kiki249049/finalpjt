@@ -33,6 +33,7 @@ def review_list(request) :
 
 @api_view(['POST'])
 def create_review(request, movie_pk) :
+    print(request)
     user = request.user
     movie = get_object_or_404(Movie, pk=movie_pk)
 

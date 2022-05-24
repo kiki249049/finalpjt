@@ -8,10 +8,16 @@
     <br>
     <br>
     <br>
-    <p style="color : white; text-align: center; font-size : 3rem;" class="fw-bold">Recommend For You!</p>
+    <p v-if="genreId==35" style="color : white; text-align: center; font-size : 3rem;" class="fw-bold">오늘 안좋은일이 있으셨군요... Comedy영화보면서 마음을 달래보는건 어떠세요?</p>
+    <p v-else-if="genreId==10751" style="color : white; text-align: center; font-size : 3rem;" class="fw-bold">요즘 많이 힘드시죠..? 지치고 힘든 순간 Family영화보면서 힐링어떠세요?</p>
+    <p v-else-if="genreId==16" style="color : white; text-align: center; font-size : 3rem;" class="fw-bold">무서워 잠 못드는 밤 Animation영화보면서 마음을 달래볼까요? </p>
+    <p v-else-if="genreId==878" style="color : white; text-align: center; font-size : 3rem;" class="fw-bold">기쁜 오늘, SF영화와 함께 우주로 떠나볼까요?</p>
+    <p v-else-if="genreId==18" style="color : white; text-align: center; font-size : 3rem;" class="fw-bold">슬퍼하지마세요... 이 순간이 {{ currentUser.username }}님의 Drama영화같은 순간이 될거에요.</p>
+    <p v-else-if="genreId==10402" style="color : white; text-align: center; font-size : 3rem;" class="fw-bold">놀란 마음 오늘 Music영화보면서 가라앉혀 볼까요?</p>
+    <p v-else style="color : white; text-align: center; font-size : 3rem;" class="fw-bold">Recommend For You!</p>
     <!-- <h1 style="color : white; text-align: center;" class="fw-bold my-3">Popular Movie</h1> -->
     <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 my-5">
-      <movie-list-item v-for="movie in movies" :key="movie.id" :movie="movie"></movie-list-item>
+      <movie-list-item v-for="movie in movies" :key="movie.id" :movie="movie" @movie-reset="fetchMovies"></movie-list-item>
     </div>
   </div>
 </template>
@@ -24,13 +30,13 @@
     name : 'MovieList',
     components : {MovieListItem},
     computed : {
-      ...mapGetters(['movies', 'currentUser']),
+      ...mapGetters(['movies', 'currentUser','genreId']),
       username() {
         return this.currentUser.username ? this.currentUser.username : 'guest'
       },
     },
     methods : {
-      ...mapActions(['fetchMovies'])
+      ...mapActions(['fetchMovies']),
     },
     created(){
       this.fetchMovies()

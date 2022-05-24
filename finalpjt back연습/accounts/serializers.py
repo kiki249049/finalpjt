@@ -8,7 +8,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         
         class Meta:
             model = Review
-            fields = ('pk', 'title', 'content','movie_title',)
+            fields = ('pk', 'title', 'content',)
 
     like_reviews = ReviewSerializer(many=True)
     reviews = ReviewSerializer(many=True)
