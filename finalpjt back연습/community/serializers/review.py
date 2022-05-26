@@ -19,7 +19,7 @@ class ReviewSerializer(serializers.ModelSerializer) :
 
         class Meta :
             model = Movie
-            fields = ('title',)
+            fields = ('title','poster_path')
     movie = MovieSerializer(read_only=True)
     comments = CommentSerializer(many=True, read_only=True) # 역참조
     user = UserSerializer(read_only=True)
@@ -31,6 +31,12 @@ class ReviewSerializer(serializers.ModelSerializer) :
 
 
 class ReviewListSerializer(serializers.ModelSerializer) :
+
+    class MovieSerializer(serializers.ModelSerializer) :
+
+        class Meta :
+            model = Movie
+            fields = ('title','poster_path')
     
     class UserSerializer(serializers.ModelSerializer) :
         class Meta :
@@ -40,7 +46,7 @@ class ReviewListSerializer(serializers.ModelSerializer) :
     user = UserSerializer(read_only=True)
     comment_count = serializers.IntegerField()
     like_count = serializers.IntegerField()
-
+    movie = MovieSerializer(read_only=True)
     class Meta :
         model = Review
-        fields = ('pk','title','rank','created_at','updated_at','user','like_count','comment_count')
+        fields = ('pk','title','rank','created_at','updated_at','user','like_count','comment_count','movie')

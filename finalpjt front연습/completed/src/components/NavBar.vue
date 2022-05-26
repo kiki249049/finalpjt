@@ -72,7 +72,7 @@
               <li><hr class="dropdown-divider"></li>
               <li>
                 <a href="#!" class="dropdown-item">
-                  <button class="text-dark fw-bold text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">MOODIE</button>
+                  <button class="text-dark fw-bold text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" style="width: 80px; padding: 0%; border: 0ch;"><img src="../assets/moodie.png" style="width:90px" alt=""></button>
                 </a>
               </li>
             </ul>
@@ -110,25 +110,55 @@
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" style="top : 20%">
     <div class="modal-content bg-dark text-white">
+      <div>
+        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbpPPYs%2FbtrDbu3h2Ug%2FBwTPrBdFuOv9l662MLPgL0%2Fimg.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbwcEHh%2FbtrC9Nbc1WX%2FHR8LlAPUUdjEq0Ik1inlqK%2Fimg.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FCbUCd%2FbtrC74SyFtD%2FCa1yzgKTuk6dfMekKdP1y0%2Fimg.png" class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        
+      </div>
+
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">오늘의 기분을 알려주세요.</h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-family: 'Noto Serif KR', serif; font-style: italic;">"당신의 하루를 들려주세요."</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form>
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Title:</label>
             <input v-model="title" type="text" class="form-control" id="recipient-name">
-          </div>
+          </div> -->
           <div class="mb-3">
-            <label for="message-text" class="col-form-label">Content:</label>
+            <label for="message-text" class="col-form-label" style="font-family: 'Noto Serif KR', serif; font-style: italic;">Content :</label>
             <textarea class="form-control" id="message-text" v-model="query"></textarea>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button @click='fetchEmotionMovies(query); queryReset()' type="button" class="btn btn-primary" data-bs-dismiss="modal">MOODIE GO</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-family: 'Noto Serif KR', serif; font-style: italic;">Close</button>
+        <button @click='fetchEmotionMovies(query); queryReset()' type="button" class="btn btn-primary" data-bs-dismiss="modal" style="font-family: 'Noto Serif KR', serif; font-style: italic;">MOODIE GO</button>
       </div>
     </div>
   </div>
@@ -139,7 +169,6 @@
   <!-- </div>
 </section> -->
 </template>
-
 <script>
   import { mapGetters, mapActions } from 'vuex'
 

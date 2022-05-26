@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>New Review</h1>
+    <!-- <h1>New Review</h1> -->
     <review-form :review="review" action="create"></review-form>
     
   </div>
@@ -27,7 +27,7 @@
     },
     created(){
       this.fetchMovie(this.$route.params.moviePk)
-    }
+    },
   }
 </script>
 

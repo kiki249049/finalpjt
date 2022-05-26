@@ -26,10 +26,15 @@
         </router-link>
       </li>
     </ul> -->
-    <br>
-    <br>
-    <br>
-    <br>
+    <div class="card2" style="background-color: #292929; border-radius:10px">
+        <div  class="photo"></div>
+        <div class="banner"></div>
+        <ul>
+            <li><b>{{ profile.username }}</b></li>
+            <li >Client</li>
+        </ul>
+
+      </div>
     <!-- 카드 -->
     <div class="profilecards">
       <div class="card">

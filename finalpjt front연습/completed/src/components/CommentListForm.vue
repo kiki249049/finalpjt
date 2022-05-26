@@ -1,9 +1,17 @@
 <template>
-  <form @submit.prevent="onSubmit" class="comment-list-form">
-    <label for="comment">comment: </label>
-    <input type="text" id="comment" v-model="content" required>
-    <button>Comment</button>
-  </form>
+  <div class="comment-form">
+     <div class="comment-avatar">
+        <img src="http://www.ipon.co.kr/common/img/default_profile.png">
+      </div>
+    <form @submit.prevent="onSubmit" class="comment-list-form form">
+      <div class="form-row mb-0">
+        <textarea placeholder="Add comment..." class="input" type="text" id="comment" v-model="content" required></textarea>
+      </div>
+      <div class="form-row">
+        <button class="btn btn-secondary mb-2">Comment</button>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -29,7 +37,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped src="@/assets/styles/commentform.css">
 .comment-list-form {
   border: 1px solid black;
   margin: 1rem;

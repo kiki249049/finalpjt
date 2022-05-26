@@ -107,7 +107,7 @@ def comment_update_or_delete(request, review_pk, comment_pk):
 
     def update_comment():
         if request.user == comment.user :
-            serializer = CommentSerializer(instance=review, data=request.data)
+            serializer = CommentSerializer(instance=comment, data=request.data)
             if serializer.is_valid(raise_exception=True) :
                 serializer.save() # 그 review에다 저장.
                 comments = review.comments.all()

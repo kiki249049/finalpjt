@@ -1,5 +1,6 @@
 <template>
   <div class="col d-flex justify-content-center my-3">
+    <iframe :src="movieKey" frameborder="0"></iframe>
     <!-- <div class="card h-100" style="width: 18rem; border-top-color: lightskyblue;">
       <img :src="imgUrl" class="card-img-top" style="width: 286px; height:400px" alt="...">
       <div class="card-body text-center">
@@ -50,7 +51,7 @@ export default {
     }
   },
   computed : {
-    ...mapGetters(['currentUser','genreId']),
+    ...mapGetters(['currentUser','genreId','movieKey']),
     imgUrl(){
       return `https://image.tmdb.org/t/p/w500${this.movie.poster_path}`
     },
@@ -95,19 +96,41 @@ export default {
       this.$emit('movie-reset',)
     }
   },
-//   mounted(){
-//     let card = document.querySelector("#card");
-//   card.onclick = () => {
-//   card.classList.add("cardTransform");
-//   let closed = document.querySelector("#closed");
-//   closed.classList.add("closeding");
-//   closed.onclick = () => {
-//     const card = document.querySelector("#card");
-//     closed.classList.remove("closeding");
-//     card.classList.remove("cardTransform");
-//   };
-// };
-//   }
+  mounted(){
+      var vid = document.getElementById("bgvid");
+var pauseButton = document.querySelector("#polina button");
+
+if (window.matchMedia('(prefers-reduced-motion)').matches) {
+    vid.removeAttribute("autoplay");
+    vid.pause();
+    pauseButton.innerHTML = "Paused";
+}
+
+function vidFade() {
+  vid.classList.add("stopfade");
+}
+
+vid.addEventListener('ended', function()
+{
+// only functional if "loop" is removed 
+vid.pause();
+// to capture IE10
+vidFade();
+}); 
+
+
+pauseButton.addEventListener("click", function() {
+  vid.classList.toggle("stopfade");
+  if (vid.paused) {
+    vid.play();
+    pauseButton.innerHTML = "Pause";
+  } else {
+    vid.pause();
+    pauseButton.innerHTML = "Paused";
+  }
+})
+
+  }
 }
 </script>
 
