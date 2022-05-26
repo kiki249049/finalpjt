@@ -4,16 +4,17 @@
       <h1 style="color: white">Movie</h1>
       <h3 style="color: white">영화를 추천해드려요</h3>
     </section>
+    <iframe :src="movieKey" frameborder="0"></iframe>
     <br>
     <br>
     <br>
     <br>
-    <p v-if="genreId==35" style="color : white; text-align: center; font-size : 3rem; font-family: 'Noto Serif KR', serif; font-style: italic;" class="fw-bold">"오늘 {{ currentUser.username }}님에게 어울리는 영화는..." <br> 오늘 안좋은일이 있으셨군요... Comedy영화보면서 마음을 달래보는건 어떠세요?</p>
-    <p v-else-if="genreId==10751" style="color : white; text-align: center; font-size : 3rem; font-family: 'Noto Serif KR', serif; font-style: italic;" class="fw-bold">"오늘 {{ currentUser.username }}님에게 어울리는 영화는..." <br>요즘 많이 힘드시죠..? 지치고 힘든 순간 Family영화보면서 힐링어떠세요?</p>
-    <p v-else-if="genreId==16" style="color : white; text-align: center; font-size : 3rem; font-family: 'Noto Serif KR', serif; font-style: italic;" class="fw-bold">"오늘 {{ currentUser.username }}님에게 어울리는 영화는..."<br>무서워 잠 못드는 밤 Animation영화 보면서 마음을 달래볼까요? </p>
-    <p v-else-if="genreId==878" style="color : white; text-align: center; font-size : 3rem; font-family: 'Noto Serif KR', serif; font-style: italic;" class="fw-bold">"오늘 {{ currentUser.username }}님에게 어울리는 영화는..." <br>기쁜 오늘, SF영화와 함께 우주로 떠나볼까요?</p>
-    <p v-else-if="genreId==18" style="color : white; text-align: center; font-size : 3rem; font-family: 'Noto Serif KR', serif; font-style: italic;" class="fw-bold">"오늘 {{ currentUser.username }}님에게 어울리는 영화는..." <br>슬퍼하지마세요... 이 순간이 {{ currentUser.username }}님의 Drama영화같은 순간이 될거에요.</p>
-    <p v-else-if="genreId==10402" style="color : white; text-align: center; font-size : 3rem; font-family: 'Noto Serif KR', serif; font-style: italic;" class="fw-bold">"오늘 {{ currentUser.username }}님에게 어울리는 영화는..." <br>놀란 마음 오늘 Music영화보면서 가라앉혀 볼까요?</p>
+    <p v-if="genreId==35" style="color : white; text-align: center; font-size : 3rem; font-family: 'Noto Serif KR', serif; font-style: italic;" class="fw-bold">"오늘 안좋은일이 있으셨군요... Comedy영화보면서 마음을 달래보는건 어떠세요?"</p>
+    <p v-else-if="genreId==10751" style="color : white; text-align: center; font-size : 3rem; font-family: 'Noto Serif KR', serif; font-style: italic;" class="fw-bold">"요즘 많이 힘드시죠..? 지치고 힘든 순간 Family영화보면서 힐링어떠세요?"</p>
+    <p v-else-if="genreId==16" style="color : white; text-align: center; font-size : 3rem; font-family: 'Noto Serif KR', serif; font-style: italic;" class="fw-bold">"무서워 잠 못드는 밤, Animation영화 보면서 마음을 달래볼까요?"</p>
+    <p v-else-if="genreId==878" style="color : white; text-align: center; font-size : 3rem; font-family: 'Noto Serif KR', serif; font-style: italic;" class="fw-bold">"기쁜 오늘, SF영화와 함께 우주로 떠나볼까요?"</p>
+    <p v-else-if="genreId==18" style="color : white; text-align: center; font-size : 3rem; font-family: 'Noto Serif KR', serif; font-style: italic;" class="fw-bold">"슬퍼하지마세요... 이 순간이 {{ currentUser.username }}님의 Drama영화같은 순간이 될거에요."</p>
+    <p v-else-if="genreId==10402" style="color : white; text-align: center; font-size : 3rem; font-family: 'Noto Serif KR', serif; font-style: italic;" class="fw-bold">"놀란 마음 오늘 Music영화보면서 가라앉혀 볼까요?"</p>
     <p v-else style="color : white; text-align: center; font-size : 3rem; font-family: 'Noto Serif KR', serif; font-style: italic;" class="fw-bold">Recommend For You!</p>
     <!-- <h1 style="color : white; text-align: center;" class="fw-bold my-3">Popular Movie</h1> -->
     <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 my-5">
@@ -30,7 +31,7 @@
     name : 'MovieList',
     components : {MovieListItem},
     computed : {
-      ...mapGetters(['movies', 'currentUser','genreId']),
+      ...mapGetters(['movies', 'currentUser','genreId','movieKey']),
       username() {
         return this.currentUser.username ? this.currentUser.username : 'guest'
       },
@@ -46,11 +47,25 @@
 </script>
 
 <style scoped >
+iframe { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+ background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
+  background-size: cover;
+  transition: 1s opacity;
+}
 
 
   section{
   height: 60vh;
-  background: url(https://res.cloudinary.com/dv3qcy9ay/image/upload/f_auto/general/venues/ZoomBackgrounds/Zoom18);
+  /* background: url(https://res.cloudinary.com/dv3qcy9ay/image/upload/f_auto/general/venues/ZoomBackgrounds/Zoom18); */
 }
 /* h1{
   font-size: 4em;
@@ -62,7 +77,7 @@
 } */
 section:before{
   content:'';
-  background: linear-gradient(to top,black,transparent);
+  /* background: linear-gradient(to top,black,transparent); */
   position: absolute;
   left: 0;
   height: 70%;
@@ -77,7 +92,7 @@ section:before{
   animation: slide 2s ease-out;
 } */
 h1{
-  font-size: 4em;
+  font-size: 5em;
   position: absolute;
   top: 250px;
   left: 250px;

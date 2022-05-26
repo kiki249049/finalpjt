@@ -20,7 +20,7 @@
           <div class="column">
                 <div class="container">
                   <main class="page-content row">
-                    <div class="card1" :style="{ backgroundImage: 'url(' + `https://image.tmdb.org/t/p/w500${review.movie.poster_path}` + ')' } " >
+                    <div class="card1 rounded" :style="{ backgroundImage: 'url(' + `https://image.tmdb.org/t/p/w500${review.movie.poster_path}` + ')' } " >
                       <div class="content">
                         <h2 class="title" style="font-size:1.5rem">{{ review.movie.title }}</h2>
                         <!-- <button class="btn">View Trips</button> -->

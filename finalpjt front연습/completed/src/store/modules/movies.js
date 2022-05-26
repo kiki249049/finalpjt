@@ -80,7 +80,7 @@ export default ({
       }else if(genrePk === 14){
         movieKey = "https://www.youtube.com/embed/bjMFebB2Coo?autoplay=1&playlist=bjMFebB2Coo&loop=1&mute=1"
       }else if(genrePk === 27){
-        movieKey = "https://www.youtube.com/embed/VdLI8I4jZD0?autoplay=1&playlist=VdLI8I4jZD0&loop=1&mute=1"
+        movieKey = "https://www.youtube.com/embed/zcI6SFiK_yk?autoplay=1&playlist=zcI6SFiK_yk&loop=1&mute=1"
       }else if(genrePk === 10749){
         movieKey = "https://www.youtube.com/embed/A1PTIxYrTVw?autoplay=1&playlist=A1PTIxYrTVw&loop=1&mute=1"
       }else if(genrePk === 35){

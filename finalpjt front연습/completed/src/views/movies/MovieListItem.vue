@@ -1,6 +1,6 @@
 <template>
   <div class="col d-flex justify-content-center my-3">
-    <iframe :src="movieKey" frameborder="0"></iframe>
+    <!-- <iframe :src="movieKey" frameborder="0"></iframe> -->
     <!-- <div class="card h-100" style="width: 18rem; border-top-color: lightskyblue;">
       <img :src="imgUrl" class="card-img-top" style="width: 286px; height:400px" alt="...">
       <div class="card-body text-center">

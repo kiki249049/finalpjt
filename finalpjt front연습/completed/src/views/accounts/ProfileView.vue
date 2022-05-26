@@ -26,7 +26,7 @@
         </router-link>
       </li>
     </ul> -->
-    <div class="card2" style="background-color: #292929; border-radius:10px">
+    <div class="card2" style="background-color: #292929; border-radius:10px; z-index: 0">
         <div  class="photo"></div>
         <div class="banner"></div>
         <ul>
